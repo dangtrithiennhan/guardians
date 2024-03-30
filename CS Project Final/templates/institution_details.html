@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% import "common.html" as macros %}
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" type = "text/css" href = "{{ url_for('static',filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Child Care Institution</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+</style>
+</head>
+<body>
+
+<!--Side Bar -->
+ {{macros.build_sidebar(name=name, role=role, pages=pages, selected="Child Care Institutions")}}
+   
+    <div class="mainarea"> 
+   <span class="underline">
+   <h3>Edit Child Care Institution</h3>
+   </span>
+   <form action="{{ url_for('institution_details.institution_save') }}" method="post">
+    <fieldset class="field_set">
+        {% for row in formData %}
+<div class="row">
+         
+    <div class="col">
+          <label>Centre Code</label>
+          <input name="centre_code" type="text" value="{{row[0]}}" class="readonly" readonly="true" required></input>
+          <br/>
+          <label>Centre Name</label>
+          <input name ="centre_name" type="text" value="{{row[1]}}" size = "60" maxlength="150" required></input>
+          <br/>
+          <label>Description</label>
+          <textarea name="description" cols=60 rows=5 maxlength=300 style="resize:none" required>{{row[2]}}</textarea>
+          <br/>
+
+          <label>Primary Phone Number</label>
+          <input name="primary_phone" type="number" value="{{row[4]}}" size = "60" maxlength="150" required></input>
+          <br/>
+          <label>Alternate Phone Number</label>
+          <input name="alternate_phone" type="number" value="{{row[5]}}" size = "60" maxlength="150" required></input>
+          <br/>
+          <label>Number of Residents</label>
+          <input name="residents" type="number" value="{{row[10]}}" size = "60" min="0" max="5000" required></input>
+          <br/>
+
+          <label>Classroom Furniture</label>
+    <select name="furniture" id="furniture" required>
+    {% if row[12] == "Y" %}
+    <option value="Y" selected>Yes</option>
+    {% else %}
+    <option value="Y">Yes</option>
+    {% endif %}
+    {% if row[12] == "N" %}
+    <option value="N" selected>No</option>
+    {% else %}
+    <option value="N">No</option>
+    {% endif %}
+    </select>
+          <br/>
+
+
+
+          <label>Parking Type</label>        
+  <select name="parking_type" id="parking_type" required>
+    
+    {% if row[14] == "BOTH" %}
+    <option value="BOTH" selected>Car & Bike</option>
+    {% else %}
+    <option value="BOTH">Car & Bike</option>
+    {% endif %}
+    {% if row[14] == "BIKE" %}
+    <option value="BIKE" selected>Bike</option>
+    {% else %}
+    <option value="BIKE">Bike</option>
+    {% endif %}
+    {% if row[14] == "CAR" %}
+    <option value="CAR" selected>Car</option>
+    {% else %}
+    <option value="CAR">Car</option>
+    {% endif %}
+  </select>
+          <br/>
+
+
+
+          <label>Stationery</label>
+    <select name="stationery" required>
+    {% if row[16] == "Y" %}
+    <option value="Y" selected>Yes</option>
+    {% else %}
+    <option value="Y">Yes</option>
+    {% endif %}
+    {% if row[16] == "N" %}
+    <option value="N" selected>No</option>
+    {% else %}
+    <option value="N">No</option>
+    {% endif %}
+    </select>
+          <br/>
+
+
+
+          <label>Security</label>
+    <select name="security" id="security" required>
+    {% if row[18] == "Y" %}
+    <option value="Y" selected>Yes</option>
+    {% else %}
+    <option value="Y">Yes</option>
+    {% endif %}
+    {% if row[18] == "N" %}
+    <option value="N" selected>No</option>
+    {% else %}
+    <option value="N">No</option>
+    {% endif %}
+    </select>
+          <br/>
+
+
+
+          <label>Medical Kit</label>
+    <select name="medical_kit" id="medicalkit" required>
+    {% if row[20] == "Y" %}
+    <option value="Y" selected>Yes</option>
+    {% else %}
+    <option value="Y">Yes</option>
+    {% endif %}
+    {% if row[20] == "N" %}
+    <option value="N" selected>No</option>
+    {% else %}
+    <option value="N">No</option>
+    {% endif %}
+    </select>
+          <br/>
+
+
+
+          <label>Kitchen</label>
+    <select name="kitchen" id="kitchen" required>
+    {% if row[22] == "Y" %}
+    <option value="Y" selected>Yes</option>
+    {% else %}
+    <option value="Y">Yes</option>
+    {% endif %}
+    {% if row[22] == "N" %}
+    <option value="N" selected>No</option>
+    {% else %}
+    <option value="N">No</option>
+    {% endif %}
+    </select>
+          <br/>
+
+
+<!--->
+
+          <!--input type="submit" value="Submit" id="btn"-->
+        </div>
+        <div class="col">
+          
+  <label>Centre Type</label>        
+  <select name="centre_type" id="center_type" required>
+    
+    {% if row[3] == "BOTH" %}
+    <option value="BOTH" selected>Mixed Gender Centre</option>
+    {% else %}
+    <option value="BOTH">Mixed Gender Centre</option>
+    {% endif %}
+    {% if row[3] == "BOYS" %}
+    <option value="BOYS" selected>Boys Centre</option>
+    {% else %}
+    <option value="BOYS">Boys Centre </option>
+    {% endif %}
+    {% if row[3] == "GIRLS" %}
+    <option value="GIRLS" selected>Girls Centre</option>
+    {% else %}
+    <option value="GIRLS">Girls Centre</option>
+    {% endif %}
+  </select>
+          <br/>
+          <label>E-Mail Address</label>
+          <input name="email" type="email" value="{{row[6]}}" size = "60" maxlength="150" required></input>
+          <br/>
+          <label>Address</label>
+          <textarea name="address" cols=60 rows=5 maxlength=300 style="resize:none" required>{{row[7]}}</textarea>
+          <br/>
+
+          <label>Co-ordinator Available</label>
+    <select name="coordinator" id="coordinator">
+    {% if row[8] == "Y" %}
+    <option value="Y" selected>Yes</option>
+    {% else %}
+    <option value="Y">Yes</option>
+    {% endif %}
+    {% if row[8] == "N" %}
+    <option value="N" selected>No</option>
+    {% else %}
+    <option value="N">No</option>
+    {% endif %}
+    </select>
+          <br/>
+          <label>Co-ordinator Phone Number</label>
+          <input name="coordinator_phone" type="number" value="{{row[9]}}" size = "60" maxlength="150" required></input>
+          <br/>
+          <label>Number of Classrooms</label>
+          <input name="classrooms" type="number" value="{{row[11]}}" size = "60" min="0" max="500" required></input>
+          <br/>
+
+          <label>Writing Boards</label>        
+  <select name="board_type" id="writing_board" required>
+    
+    {% if row[13] == "BOTH" %}
+    <option value="BOTH" selected>Whiteboard & Blackboard</option>
+    {% else %}
+    <option value="BOTH">Whiteboard & Blackboard</option>
+    {% endif %}
+    {% if row[13] == "WHITE" %}
+    <option value="WHITE" selected>Whiteboard</option>
+    {% else %}
+    <option value="WHITE">Whiteboard</option>
+    {% endif %}
+    {% if row[13] == "BLACK" %}
+    <option value="BLACK" selected>Blackboard</option>
+    {% else %}
+    <option value="BLACK">Blackboard</option>
+    {% endif %}
+  </select>
+          <br/>
+
+
+
+          <label>Water Dispenser</label>
+    <select name="water_dispenser" id="water" required>
+    {% if row[15] == "Y" %}
+    <option value="Y" selected>Yes</option>
+    {% else %}
+    <option value="Y">Yes</option>
+    {% endif %}
+    {% if row[15] == "N" %}
+    <option value="N" selected>No</option>
+    {% else %}
+    <option value="N">No</option>
+    {% endif %}
+    </select>
+          <br/>
+          <label>Storage</label>
+    <select name="storage" id="storage" required>
+    {% if row[17] == "Y" %}
+    <option value="Y" selected>Yes</option>
+    {% else %}
+    <option value="Y">Yes</option>
+    {% endif %}
+    {% if row[17] == "N" %}
+    <option value="N" selected>No</option>
+    {% else %}
+    <option value="N">No</option>
+    {% endif %}
+    </select>
+          <br/>
+
+          <label>Power Backup</label>
+    <select name="power_backup" id="powerbackup" required>
+    {% if row[19] == "Y" %}
+    <option value="Y" selected>Yes</option>
+    {% else %}
+    <option value="Y">Yes</option>
+    {% endif %}
+    {% if row[19] == "N" %}
+    <option value="N" selected>No</option>
+    {% else %}
+    <option value="N">No</option>
+    {% endif %}
+    </select>
+          <br/>
+
+          <label>Guest Toilet</label>
+    <select name="guest_toilet" id="toilet" required>
+    {% if row[21] == "Y" %}
+    <option value="Y" selected>Yes</option>
+    {% else %}
+    <option value="Y">Yes</option>
+    {% endif %}
+    {% if row[21] == "N" %}
+    <option value="N" selected>No</option>
+    {% else %}
+    <option value="N">No</option>
+    {% endif %}
+    </select>
+          <br/>
+
+     <label>Last Updated By</label>
+     <input name="last_updated" type="text" class="readonly" value="{{row[23]}}" readonly="true"></input>
+          
+          </div>
+
+</div>
+        {% endfor %}
+<div class="row">
+<a href="{{ url_for('institutions.institute_list') }}" class="link-button" >Cancel</a>
+
+<button type="submit" name="submit-btn"> Save </button>
+</div>
+
+   <label class="msg">{{message}}</label>
+    </fieldset>
+</form>
+     </div>
+
+<div class="container">
+    <img src="/static/images/branding.png" alt="thiennhansoft" class="branding"/>
+</div>
+</body>
+</html>
+

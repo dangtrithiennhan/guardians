@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+ font-family: 'Copperplate', fantasy;
+
+}
+
+form {width:50%; border: 3px solid #f1f1f1; text-align: center; margin-left: 25%}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: 'Copperplate', fantasy;
+}
+
+h2 {
+text-align: center;
+font-family: 'Copperplate', fantasy;
+} 
+
+button {
+  background-color: #ffc40c;
+  color: #283454;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-family: 'Copperplate', fantasy;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+img.branding {
+  width: 100px;
+  position:absolute;
+  right:10px;
+  bottom:10px 
+}
+
+img.graduation {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+
+.container {
+  padding: 16px;
+}
+
+label.msg {
+color: #880808;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+
+
+<h2>Volunteer Login</h2>
+
+
+<form action="/login" method="post">
+  <div class="imgcontainer">
+    <img src="/static/images/guardians-of-dreams_logo.png" alt="Avatar" class="avatar"/>
+  </div>
+    
+    <label class="msg">{{message}}</label>
+
+  <div class="container">
+
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+        
+    <button type="submit">Login</button>
+  </div>
+</form>
+<div class="container">
+    <img src="/static/images/cape.jpg" alt="graduation" class="graduation"/>
+</div>
+
+<div class="container">
+    <img src="/static/images/branding.png" alt="thiennhansoft" class="branding"/>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% import "common.html" as macros %}
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" type = "text/css" href = "{{ url_for('static',filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+</style>
+</head>
+<body>
+
+<!--Side Bar -->
+ {{macros.build_sidebar(name=name, role=role, pages=pages, selected="Profile")}}
+   
+    <div class="mainarea"> 
+   <span class="underline">
+   <h3>Profile</h3>
+   </span>
+
+  <form >
+    <fieldset class="field_set" disabled="disabled">
+        {% for row in formData %}
+<div class="row">
+      
+    <div class="col">
+         {% for item in row %} 
+          <label class="left_label" for="i{{loop.index0}}">{{labels[loop.index0]}}</label>
+          {% if labels[loop.index0] != "Address" %}
+          <input id="i{{loop.index0}}" value="{{item}}" size="100"></input>
+          {% else %}
+          <textarea name="address" cols=100 rows=3 maxlength=300 style="resize:none">{{item}}</textarea> 
+          {% endif %}
+           <br/>
+        {% endfor %}
+          </div>
+    <div class="col">
+          </div>
+</div>
+        {% endfor %}
+    </fieldset>
+</form> 
+
+     </div>
+
+
+<div class="container">
+    <img src="/static/images/branding.png" alt="thiennhansoft" class="branding"/>
+</div>
+</body>
+</html>

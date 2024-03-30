@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% import "common.html" as macros %}
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" type = "text/css" href = "{{ url_for('static',filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+</style>
+</head>
+<body>
+
+
+ <!--Side Bar -->
+ {{macros.build_sidebar(name=name, role=role, pages=pages, selected="About Us")}}
+ <div class="mainarea"> 
+
+ <span class="underline">
+   <h3>About Us</h3>
+   </span>
+   <img src="/static/images/about_us.png" alt="About Us"  class="aboutimg" title="About Us" />
+<div class="abouttext">
+
+Guardians of Dreams is an organization working to upgrade and transform the quality of care across Child Care Institutions.
+Our work spans across a partner network of 300+ Children’s Homes in Bengaluru, Chennai and Ernakulam districts in India.
+<br><br>
+We believe that creating a thriving environment for all children is a foundational societal function. Child Care Institutions (Children’s Homes) provide a safety net for our most vulnerable and their capacity & capability determines our ability to provide effective care.
+</div>
+
+
+   <img src="/static/images/contact_us.png" alt="About Us"  class="contactimg" title="About Us" />
+
+
+ </div>
+
+<div class="container">
+    <img src="/static/images/branding.png" alt="thiennhansoft" class="branding"/>
+</div>
+</body>
+</html>

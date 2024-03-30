@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% import "common.html" as macros %}
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" type = "text/css" href = "{{ url_for('static',filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Attendance</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+</style>
+</head>
+<body>
+
+<!--Side Bar -->
+ {{macros.build_sidebar(name=name, role=role, pages=pages, selected="Register Attendance")}}
+   
+    <div class="mainarea"> 
+   <span class="underline">
+   <h3>Register Attendance</h3>
+   </span>
+   <form action="{{ url_for('register_attendance.attendance_save') }}" method="post">
+    <fieldset class="field_set">
+        {% for row in formData %}
+<div class="row">
+         
+         <div class="col">
+          <label>Centre Code</label>
+          <input name="centre_code" type="text" value="{{row[0]}}" class="readonly" readonly="true" required></input>
+          <br/>
+          <label>Batch Code</label>
+          <input name="batch_code" type="text" value="{{row[2]}}" class="readonly" readonly="true" required></input>
+          <br/>
+          <label>Class Date</label>
+          <input name="class_date" type="date" required placeholder="DD-MM-YYYY"> </input>
+          <br/>
+          <label>Teacher Comments</label>
+           <textarea name="comments" cols=60 rows=5 maxlength=300 style="resize:none" required></textarea>
+          <br/>
+        </div>
+        <div class="col">
+          
+          <label>Centre Name</label>
+          <input name="centre_name" type="text" value="{{row[1]}}" class="readonly" readonly="true" required></input>
+          <br/>
+          <label>Batch Name</label>
+          <input name="batch_name" type="text" value="{{row[3]}}" class="readonly" readonly="true" required></input>
+          <br/>
+
+          </div>
+
+</div>
+        {% endfor %}
+<div class="row">
+<a href="{{ url_for('history.attendance_list') }}" class="link-button" >Cancel</a>
+
+<button type="submit" name="submit-btn"> Submit </button>
+</div>
+
+    </fieldset>
+</form>
+<div class="row">
+ <label class="msg">{{message}}</label>
+</div>
+     </div>
+
+<div class="container">
+    <img src="/static/images/branding.png" alt="thiennhansoft" class="branding"/>
+</div>
+</body>
+</html>
+
